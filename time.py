@@ -36,8 +36,7 @@ try:
                     draw.text((0, 0), text, font=font, fill=0)
                     disp.image(image)
                     disp.display()
-                    weekday_str = weekdays[now.weekday()]
-                    text = (f'{weekday_str}, 01/01')
+                    text = ('01/01')
                     time.sleep(5)
                     draw.rectangle((0, 0, width, height), outline=0, fill=1)
                     draw.text((0, 0), text, font=font, fill=0)
@@ -48,8 +47,7 @@ try:
 
                 elif now.hour == 0 or now.hour == 12:
                     font = ImageFont.truetype(font_path, 30)
-                    weekday_str = weekdays[now.weekday()]
-                    text = now.strftime(f'{weekday_str}, %m/%d/')
+                    text = now.strftime('%m/%d')
                     draw.rectangle((0, 0, width, height), outline=0, fill=1)
                     draw.text((0, 0), text, font=font, fill=0)
                     disp.image(image)
