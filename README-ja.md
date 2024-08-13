@@ -6,7 +6,7 @@ Raspberry piを使って、現在の日時をI2C液晶に表示させるPython�
 ## 用意したもの
 ・Raspberry pi 3<br>
 ・[I2Cディスプレイ](https://amzn.asia/d/0ixCi5Gz)<br>
-・ブレットボード
+・ブレッドボード
 
 I2C通信を有効にすること。
 
