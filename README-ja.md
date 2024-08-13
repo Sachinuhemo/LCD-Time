@@ -72,7 +72,7 @@ font = ImageFont.truetype(font_path, 15)
 
 try:
     now = datetime.datetime.now()
-    weekdays = ['Mon', 'Thu', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     while True:
 
         if now.second != datetime.datetime.now().second:
@@ -149,7 +149,7 @@ sudo pyhon3 time.py
 <img src="https://github.com/user-attachments/assets/f5eec34b-2086-462e-b6ec-8ebdcab5a1ce" width="500">
 <img src="https://github.com/user-attachments/assets/12c2d48f-52a5-4d66-a006-530bd4479081" width="500">
 
-このように表示されます。
+このように表示されます。(Thu → Tue)
 
 <img src="https://github.com/user-attachments/assets/37543157-dff6-4f9e-9142-294c9d090206" width="500">
 
