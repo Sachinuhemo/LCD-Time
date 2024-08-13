@@ -11,6 +11,7 @@ disp.begin()
 disp.clear()
 disp.display()
 
+# 画像
 width = disp.width
 height = disp.height
 image = Image.new('1', (width, height))
@@ -21,53 +22,63 @@ font_path = "/usr/share/fonts/truetype/takao-gothic/TakaoPGothic.ttf"
 font = ImageFont.truetype(font_path, 15)
 
 try:
-    # 現在日時
-    dt_now = datetime.datetime.now()
+    now = datetime.datetime.now()
+    weekdays = ['月', '火', '水', '木', '金', '土', '日']
     while True:
 
         # 時間が変わったなら
-        if dt_now.second != datetime.datetime.now().second:
-            dt_now = datetime.datetime.now()
-            if dt_now.minute == 0 and dt_now.second < 10:
-                if dt_now.month == 1 and dt_now.day == 1:
+        if now.second != datetime.datetime.now().second:
+            now = datetime.datetime.now()
+            if now.minute == 0 and now.second == 0:
+                if now.month == 1 and now.day == 1:
                     font = ImageFont.truetype(font_path, 30)
-                    text = dt_now.strftime('%Y年')
-
-                elif dt_now.hour == 0 or dt_now.hour == 12:
-                    font = ImageFont.truetype(font_path, 30)
-                    week = datetime.datetime.now().weekday()
-                    if week == 0:
-                        text = dt_now.strftime('%m/%d 月')
-                    elif week == 1:
-                        text = dt_now.strftime('%m/%d 火')
-                    elif week == 2:
-                        text = dt_now.strftime('%m/%d 水')
-                    elif week == 3:
-                        text = dt_now.strftime('%m/%d 木')
-                    elif week == 4:
-                        text = dt_now.strftime('%m/%d 金')
-                    elif week == 5:
-                        text = dt_now.strftime('%m/%d 土')
-                    elif week == 6:
-                        text = dt_now.strftime('%m/%d 日')
-
-                else:
-                    text = dt_now.strftime('%Y年%m月%d日\n%H時%M分%S秒')
+                    text = now.strftime('%Y年')
                     draw.rectangle((0, 0, width, height), outline=0, fill=1)
                     draw.text((0, 0), text, font=font, fill=0)
                     disp.image(image)
                     disp.display()
-                    continue    # while文の一番最初に戻る
+                    weekday_str = weekdays[now.weekday()]
+                    text = (f'01/01 {weekday_str}')
+                    time.sleep(5)
+                    draw.rectangle((0, 0, width, height), outline=0, fill=1)
+                    draw.text((0, 0), text, font=font, fill=0)
+                    disp.image(image)
+                    disp.display()
+                    font = ImageFont.truetype(font_path, 15)
+                    time.sleep(5)
 
-                draw.rectangle((0, 0, width, height), outline=0, fill=1)
-                draw.text((0, 0), text, font=font, fill=0)
-                disp.image(image)
-                disp.display()
-                time.sleep(9)
-                font = ImageFont.truetype(font_path, 15)
+                elif now.hour == 0 or now.hour == 12:
+                    font = ImageFont.truetype(font_path, 30)
+                    weekday_str = weekdays[now.weekday()]
+                    text = now.strftime(f'%m/%d {weekday_str}')
+                    draw.rectangle((0, 0, width, height), outline=0, fill=1)
+                    draw.text((0, 0), text, font=font, fill=0)
+                    disp.image(image)
+                    disp.display()
+                    font = ImageFont.truetype(font_path, 15)
+                    time.sleep(10)
+
+                else:
+                    text = now.strftime('%Y年%m月%d日\n%H時%M分%S秒')
+                    draw.rectangle((0, 0, width, height), outline=0, fill=1)
+                    draw.text((0, 0), text, font=font, fill=0)
+                    disp.image(image)
+                    disp.display()
+                    while now.second <= 9:
+                        if now.second != datetime.datetime.now().second:
+                            now = datetime.datetime.now()
+                            text = now.strftime('%Y年%m月%d日\n%H時%M分%S秒')
+                            draw.rectangle((0, 0, width, height), outline=0, fill=1)
+                            draw.text((0, 0), text, font=font, fill=0)
+                            disp.image(image)
+                            disp.display()
+                            draw.rectangle((0, 0, width, height), outline=0, fill=1)
+                            draw.text((0, 0), text, font=font, fill=0)
+                            disp.image(image)
+                            disp.display()
 
             else:
-                text = dt_now.strftime('%Y年%m月%d日\n%H時%M分%S秒')
+                text = now.strftime('%Y年%m月%d日\n%H時%M分%S秒')
                 draw.rectangle((0, 0, width, height), outline=0, fill=0)
                 draw.text((0, 0), text, font=font, fill=1)
                 disp.image(image)
