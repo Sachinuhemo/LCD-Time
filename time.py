@@ -23,7 +23,7 @@ font = ImageFont.truetype(font_path, 15)
 
 try:
     now = datetime.datetime.now()
-    weekdays = ['Mon', 'Thu', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     while True:
 
         if now.second != datetime.datetime.now().second:
