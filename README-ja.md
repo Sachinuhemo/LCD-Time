@@ -1,4 +1,3 @@
-![GitHub License](https://img.shields.io/github/license/Sachinuhemo/LCD-Time)
 ![](https://img.shields.io/github/repo-size/Sachinuhemo/LCD-Time)
 
 
